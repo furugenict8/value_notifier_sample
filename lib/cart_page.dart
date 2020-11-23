@@ -26,9 +26,9 @@ class CartPage extends StatelessWidget {
                   itemCount: cart.items.length,
                   itemBuilder: (context, index) => ListTile(
                       title: Text('${cart.items[index].name}'),
-                      subtitle: Text('${cart.items[index].price}')),
+                      subtitle: Text('${cart.items[index].priceWithUnit}')),
                 ),
-                Text('合計金額: ${cart.totalPrice}'),
+                Text('合計金額: ${cart.totalPriceWithUnit}'),
               ],
             ),
           );
