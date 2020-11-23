@@ -18,7 +18,11 @@ void main() {
     cartNotifier.addListener(() {
       lastValue = cartNotifier.value;
     });
+
     cartNotifier.update(cart);
     expect(lastValue, cart);
+
+    cartNotifier.remove(Item(1, 'grape', 300));
+    expect(lastValue.items.map((e) => e.id), [2]);
   });
 }
