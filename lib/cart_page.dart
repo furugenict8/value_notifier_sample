@@ -9,21 +9,26 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('カート'),
+      ),
       body: ValueListenableBuilder<Cart>(
         valueListenable: cartNotifier,
-        builder: (context, value, _) {
-          if (value == null) {
+        builder: (context, cart, _) {
+          if (cart == null) {
             return const CircularProgressIndicator();
           }
           return Center(
             child: Column(
               children: [
                 ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: cart.items.length,
                   itemBuilder: (context, index) => ListTile(
-                      title: Text('${value.items[index].name}'),
-                      subtitle: Text('${value.items[index].price}')),
+                      title: Text('${cart.items[index].name}'),
+                      subtitle: Text('${cart.items[index].price}')),
                 ),
-                Text('合計金額: ${value.totalPrice}'),
+                Text('合計金額: ${cart.totalPrice}'),
               ],
             ),
           );
