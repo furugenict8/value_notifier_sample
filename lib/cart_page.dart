@@ -29,22 +29,24 @@ class CartView extends StatelessWidget {
         return Center(
           child: Column(
             children: [
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount: cart.items.length,
-                itemBuilder: (context, index) => ListTile(
-                  title: Text('${cart.items[index].name}'),
-                  subtitle: Text('${cart.items[index].priceWithUnit}'),
-                  trailing: FlatButton(
-                    onPressed: () {
-                      cartNotifier.remove(cart.items[index]);
-                    },
-                    color: Theme.of(context).accentColor,
-                    child: Text('削除'),
-                    textColor: Colors.white,
-                  ),
-                ),
-              ),
+              cart.items.length == 0
+                  ? Text('カートは空です。')
+                  : ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: cart.items.length,
+                      itemBuilder: (context, index) => ListTile(
+                        title: Text('${cart.items[index].name}'),
+                        subtitle: Text('${cart.items[index].priceWithUnit}'),
+                        trailing: FlatButton(
+                          onPressed: () {
+                            cartNotifier.remove(cart.items[index]);
+                          },
+                          color: Theme.of(context).accentColor,
+                          child: Text('削除'),
+                          textColor: Colors.white,
+                        ),
+                      ),
+                    ),
               Text('合計金額: ${cart.totalPriceWithUnit}'),
             ],
           ),

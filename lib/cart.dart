@@ -6,7 +6,9 @@ class Cart {
   }
 
   List<Item> items;
-  int get totalPrice => items.map((a) => a.price).reduce((a, b) => a + b);
+  int get totalPrice =>
+      items.length > 0 ? items.map((a) => a.price).reduce((a, b) => a + b) : 0;
+
   String get totalPriceWithUnit => '$totalPrice円';
   int get itemsCount => items.length;
 
