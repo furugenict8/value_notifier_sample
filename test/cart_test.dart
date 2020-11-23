@@ -18,7 +18,7 @@ void main() {
     cartNotifier.addListener(() {
       lastValue = cartNotifier.value;
     });
-    cartNotifier.value = cart;
+    cartNotifier.update(cart);
     expect(lastValue, cart);
   });
 }
