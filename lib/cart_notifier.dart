@@ -12,8 +12,8 @@ class CartNotifier extends ValueNotifier<Cart> {
     value = await repository.get();
   }
 
-  void update(value) {
-    value = value;
+  void update(Cart value) {
+    this.value = value;
   }
 
   final CartRepository repository;
