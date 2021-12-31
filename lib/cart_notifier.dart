@@ -10,6 +10,7 @@ class CartNotifier extends ValueNotifier<Cart> {
   }
 
   void init() async {
+    // repository.get()からはCartのインスタンスが取得できる
     value = await repository.get();
   }
 
