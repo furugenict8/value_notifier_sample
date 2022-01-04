@@ -6,8 +6,8 @@ import 'item.dart';
 class Cart {
   Cart(this.items);
 
-
   final List<Item> items;
+
   int get totalPrice =>
       //　三項演算子 (条件) ? trueの場合 : falseの場合
       // map(): Iterableの各要素に()内のFunctionを適用して新たにIterableを返すメソッド
@@ -19,7 +19,11 @@ class Cart {
   String get totalPriceWithUnit => '$totalPrice円';
 
   Cart remove(Item item) {
+    // Cartを作り直して返す
     return Cart(
+      // where()については引数の条件式を満たす要素のみを取り出して新たなIterableを作る。
+      // !expr: inverts the following expression (changes false to true, and vice versa)
+      // itemsの中で、idが引数と異なるitemがあった場合はそれを拾って新たにIterableを作る。それをListに変換。
       this.items.where((e) => !e.equals(item)).toList(),
     );
   }
