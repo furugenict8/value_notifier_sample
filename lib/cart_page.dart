@@ -31,9 +31,13 @@ class CartView extends StatelessWidget {
             children: [
               cart.items.length == 0
                   ? Text('カートは空です。')
+                    // 無限に追加できる時に使うListを作るListView.builder
                   : ListView.builder(
+                      // shrinkWrap: trueにするとListTileの数に合わせてListを作る
                       shrinkWrap: true,
+                      // itemCount: itemの数を表す
                       itemCount: cart.items.length,
+                      //　itemBuilder: Listのひとつひとつの要素を作る。Widgetを返すfunctionを入れる。
                       itemBuilder: (context, index) => ListTile(
                         title: Text('${cart.items[index].name}'),
                         subtitle: Text('${cart.items[index].priceWithUnit}'),
