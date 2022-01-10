@@ -17,6 +17,7 @@ class CartPage extends StatelessWidget {
 }
 
 class CartView extends StatelessWidget {
+  //Cartの状態管理をするCartNotifierを作る。
   final cartNotifier = CartNotifier(repository: CartRepository());
   @override
   Widget build(BuildContext context) {

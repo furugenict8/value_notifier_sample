@@ -14,10 +14,10 @@ class CartNotifier extends ValueNotifier<Cart> {
     init();
   }
 
-  // おそらく、async awaitを使っているのはrepository.get()がasyncを使っているからかな。
+  // おそらく、async awaitを使っているのはrepository.get()が非同期関数をだから。
   // valueはValueNotifierで定義されているfield。Genericsで指定されているインスタンスが入る。
   // 今回はCart
-  // つまり、以下ではValueNotifierで監視しているCartを初期化している。
+  // つまり、以下ではValueNotifierで監視しているvalueにCartを入れることが初期化としている。
   void init() async {
     // repository.get()からはCartのインスタンスが取得できる
     value = await repository.get();
