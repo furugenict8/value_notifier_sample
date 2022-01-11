@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'cart.dart';
 import 'cart_repository.dart';
 import 'item.dart';
@@ -19,7 +18,7 @@ class CartNotifier extends ValueNotifier<Cart> {
   // 今回はCart
   // つまり、以下ではValueNotifierで監視しているvalueにCartを入れることが初期化としている。
   void init() async {
-    // repository.get()からはCartのインスタンスが取得できる
+    // repository.get()からはCartのインスタンスを取得して、状態変数valueにセット
     value = await repository.get();
   }
 

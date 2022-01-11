@@ -17,12 +17,18 @@ class CartPage extends StatelessWidget {
 }
 
 class CartView extends StatelessWidget {
-  //Cartの状態管理をするCartNotifierを作る。
+  // Cartの状態管理をするCartNotifierを作る。
+  // CartNotifierの引数にはCartが入る。（今回はCartRepository()でCartを用意）
   final cartNotifier = CartNotifier(repository: CartRepository());
   @override
   Widget build(BuildContext context) {
+
+    // ValueNotifierのlistener
     return ValueListenableBuilder<Cart>(
+      // notifyを受け取るValueNotifierを指定。
       valueListenable: cartNotifier,
+      // 真ん中のパラメータにValueNotifierのvalueが入る。今回はCart
+      // builder以下のUIに適用できる。
       builder: (context, cart, _) {
         if (cart == null) {
           return const CircularProgressIndicator();
@@ -44,6 +50,8 @@ class CartView extends StatelessWidget {
                         subtitle: Text('${cart.items[index].priceWithUnit}'),
                         trailing: FlatButton(
                           onPressed: () {
+                            // cartNotifier.remove()を実行すると、
+                            // ValurNotifierのnotifyListener()も実行され通知が飛ぶ
                             cartNotifier.remove(cart.items[index]);
                           },
                           color: Theme.of(context).accentColor,
