@@ -22,10 +22,13 @@ class CartNotifier extends ValueNotifier<Cart> {
     value = await repository.get();
   }
 
-  // valueはValueNotifierのvalueであり、Cartが入っている。
-  // Cartのremove()をして、valueに再代入。
-  // Cartのremove()は、
+  // valueはextendsしているValueNotifierのvalueであり、Cart型
+  // Cartのremove()をして、valueに再代入している。
+  // ということはValueNotifierで定義しているsetterを使っているので、
+  // notifyListener()される。
+  // ※Cartのremove()は、
   // List itemsから引数のitemを削除し、List itemsを作り直す。
+  // Flutter Note2のP2でめもあり。
   void remove(Item item) {
     this.value = value.remove(item);
   }
