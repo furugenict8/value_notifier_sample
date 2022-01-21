@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+
 import 'cart.dart';
 import 'cart_repository.dart';
 import 'item.dart';
-
 
 // Cartの状態管理をするValueNotifier
 class CartNotifier extends ValueNotifier<Cart> {
   // CartNotifierのコンストラクタ。空のコンストラクタを作っていると思われる。
   //　CartRepositoryを引数にとる→super(ValueNotifier)のコンストラクタを呼び出し、そこでinit()している。
-  // _valueをnullにしているので、空のカートを作っているイメージだと思う。
+  // _valueをnullにしているので、空のカートを作ってinit()でCartのインスタンスをvalueに入れてる。
   CartNotifier({@required this.repository}) : super(null) {
     init();
   }
